@@ -1,1 +1,62 @@
 @import '~bootstrap/scss/bootstrap';
+
+$primary-color: #00bf1f;
+$secondary-color: #eaeaea;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+nav {
+  background-color: $primary-color;
+  font-size: 1.5rem;
+  height: 4rem;
+  margin: 1px 0;
+}
+
+body {
+  background: $secondary-color;
+  color: $primary-color;
+  font-family: 'Nunito', sans-serif;
+}
+
+header {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+}
+
+h1 {
+  font-size: 5rem;
+  margin: 20px 0 0;
+}
+
+h2 {
+  font-size: 7rem;
+}
+
+h4 {
+  color: white;
+}
+
+button {
+  background-color: $primary-color;
+  border: 0;
+  color: $secondary-color;
+  font-size: 25px;
+  line-height: 25px;
+  margin: 10px;
+  padding: 15px;
+}
+
+input {
+  border: 1px solid;
+}
+
+.credentials-menu {
+  background-color: $primary-color;
+  color: $secondary-color;
+  display: flex;
+}
