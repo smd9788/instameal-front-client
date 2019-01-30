@@ -37,11 +37,23 @@ const signOut = () => {
     method: 'DELETE'
   })
 }
+const startOrder = (formData) => {
+  return $.ajax({
+    url: config.apiUrl + '/orders',
+    method: 'POST',
+    headers: {
+      contentType: 'application/json',
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: formData
+  })
+}
 
 module.exports = {
   signUp,
   signIn,
   changePassword,
   signOut,
-  store
+  store,
+  startOrder
 }

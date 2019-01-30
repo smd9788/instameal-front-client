@@ -46,12 +46,12 @@ const onSignOutFailure = () => {
 }
 
 module.exports = {
-  onSignUpSuccess: onSignUpSuccess,
-  onSignUpFailure: onSignUpFailure,
-  onSignInSuccess: onSignInSuccess,
-  onSignInFailure: onSignInFailure,
-  onChangePasswordSuccess: onChangePasswordSuccess,
-  onChangePasswordFailure: onChangePasswordFailure,
-  onSignOutSuccess: onSignOutSuccess,
-  onSignOutFailure: onSignOutFailure
+  onSignUpSuccess,
+  onSignUpFailure,
+  onSignInSuccess,
+  onSignInFailure,
+  onChangePasswordSuccess,
+  onChangePasswordFailure,
+  onSignOutSuccess,
+  onSignOutFailure
 }
