@@ -1,6 +1,7 @@
 'use strict'
 const store = require('./store')
 const showMealsTemplate = require('./templates/get-meals.handlebars')
+const createOrderTemplate = require('./templates/create-order.handlebars')
 
 $('#change-password-button').hide()
 $('#sign-out-button').hide()
@@ -46,9 +47,17 @@ const onSignOutFailure = () => {
   $('#user-message').text('error. you are not logged in')
 }
 const getMealsSuccess = (data) => {
-  console.log(data)
-  const showMealsHtml = showMealsTemplate({ meals: data.meals })
+  const showMealsHtml = showMealsTemplate({
+    meals: data.meals
+  })
   $('#menu-cards').html(showMealsHtml)
+}
+
+const createOrderSuccess = (response) => {
+  const orderData = response.order
+  store.order = orderData
+  $('.box').html('')
+  $('#user-message').text('Order started. Add your meals now.')
 }
 
 module.exports = {
@@ -60,5 +69,6 @@ module.exports = {
   onChangePasswordFailure,
   onSignOutSuccess,
   onSignOutFailure,
-  getMealsSuccess
+  getMealsSuccess,
+  createOrderSuccess
 }

@@ -17,9 +17,8 @@
 <body>
   <header>
     <nav class="nav justify-content-end">
-      <button id="getMealsButton" class="btn btn-default">Weekly Menu</button>
       <button id="order-history-button" type="button" class="btn btn-primary" data-toggle="modal" data-target="#order-history-modal">
-        Game History
+        Order History
       </button>
       <button id="sign-up-button" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalRegisterForm">
         Sign-Up
@@ -34,6 +33,7 @@
         Logout
       </button>
     </nav>
+    <button id="getMealsButton" class="btn btn-default btn-lg">Show menu</button>
     <h1>InstaMeal</h1>
     <h4 id="user-message"></h4>
   </header>
@@ -60,8 +60,7 @@
           </div>
           <div class="md-form mb-4">
             <p class="fas fa-lock prefix grey-text"></p>
-            <input type="password" id="signUpForm-confirmPassword" class="form-control validate" name="credentials[password_confirmation]"
-              autocomplete="off">
+            <input type="password" id="signUpForm-confirmPassword" class="form-control validate" name="credentials[password_confirmation]" autocomplete="off">
             <label data-error="wrong" data-success="right" for="signUpForm-confirmPassword">Confirm Password</label>
           </div>
         </div>
@@ -136,7 +135,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Game History</h5>
+          <h5 class="modal-title">Order History</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -149,7 +148,17 @@
     </div>
   </div>
 
-  <div class='container' id='menu-cards'></div>
+  <div>
+    <div class='container'>
+      <div class="row">
+        <!-- This is where menu renders with Handlebars template -->
+        <div class=col-sm-4 id='menu-cards'></div>
+        <!-- This is where shopping cart renders with Handlebars template -->
+        <div class=col-lg-6 id='current-order'></div>
+      </div>
+    </div>
+  </div>
+
 </body>
 
 </html>

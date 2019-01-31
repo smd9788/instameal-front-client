@@ -45,7 +45,7 @@ const getMeals = function () {
   })
 }
 
-const startOrder = (formData) => {
+const createOrder = (formData) => {
   return $.ajax({
     url: config.apiUrl + '/orders',
     method: 'POST',
@@ -63,6 +63,6 @@ module.exports = {
   changePassword,
   signOut,
   store,
-  startOrder,
+  createOrder,
   getMeals
 }
