@@ -17,6 +17,7 @@
 <body>
   <header>
     <nav class="nav justify-content-end">
+      <button id="getMealsButton" class="btn btn-default">Weekly Menu</button>
       <button id="order-history-button" type="button" class="btn btn-primary" data-toggle="modal" data-target="#order-history-modal">
         Game History
       </button>
@@ -147,14 +148,8 @@
       </div>
     </div>
   </div>
-  <div class='container' id='menu-cards'>
-    <div class="card" id="meal-card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title" id="meal-title">Meal title</h5>
-        <a href="#" class="btn btn-primary">Add to order</a>
-      </div>
-    </div>
-  </div>
+
+  <div class='container' id='menu-cards'></div>
 </body>
 
 </html>

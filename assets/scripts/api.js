@@ -37,6 +37,14 @@ const signOut = () => {
     method: 'DELETE'
   })
 }
+
+const getMeals = function () {
+  return $.ajax({
+    url: config.apiUrl + '/meals',
+    method: 'GET'
+  })
+}
+
 const startOrder = (formData) => {
   return $.ajax({
     url: config.apiUrl + '/orders',
@@ -55,5 +63,6 @@ module.exports = {
   changePassword,
   signOut,
   store,
-  startOrder
+  startOrder,
+  getMeals
 }

@@ -11,6 +11,7 @@ $(() => {
   $('#sign-in').on('submit', events.onSignIn)
   $('#change-password').on('submit', events.onChangePassword)
   $('#sign-out-button').on('click', events.onSignOut)
+  events.addHandlers()
   // $('#order-history-button').on('click', events.onFindGames)
   // $('#modal-form').on('submit', events.onSubmitForm)
 })

@@ -38,9 +38,23 @@ const onSignOut = (event) => {
   $('#sign-out').hide()
 }
 
+const onGetMeals = (event) => {
+  event.preventDefault()
+  api.getMeals()
+    .then(ui.getMealsSuccess)
+    .catch(ui.failure)
+}
+
+const addHandlers = () => {
+  $('#getMealsButton').on('click', onGetMeals)
+  // $('.content').on('click', '.delete-meal', onDeleteMeal)
+}
+
 module.exports = {
   onSignUp,
   onSignIn,
   onChangePassword,
-  onSignOut
+  onSignOut,
+  onGetMeals,
+  addHandlers
 }
