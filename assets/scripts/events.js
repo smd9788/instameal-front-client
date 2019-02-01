@@ -49,14 +49,16 @@ const onGetMeals = (event) => {
 const onCreateOrder = (event) => {
   event.preventDefault()
   console.log(event)
+
   const mealName = event.target.parentNode.parentNode.childNodes['1'].innerText
   const price = event.target.dataset.price
+
   const id = event.target.dataset.id
   const quantity = parseInt(getFormFields(event.target).quantity)
   const total = parseFloat(price) * quantity
-  $('#current-order').html(`<h5>Added ${quantity} ${mealName} to cart</h5>`)
-  $('#current-order').append(`<h5>Order Total: ${total}</h5>`)
-
+  store.price += total
+  $('#tooltip').html(`<h5>Added ${quantity} ${mealName} to cart</h5>`)
+  $('#tooltip').append(`<h5>Order Total: ${Math.round(store.price * 100) / 100}</h5>`)
   const data = {
     order: {
       user_id: store.user.id,
@@ -65,9 +67,12 @@ const onCreateOrder = (event) => {
       quantity: quantity
     }
   }
-  console.log(data)
+
   api.createOrder(data)
-    .then(ui.createOrderSuccess)
+    .then((response) => {
+      ui.createOrderSuccess(response)
+      ui.addMealsSuccess(response, total, mealName)
+    })
     .catch(ui.failure)
 }
 
@@ -85,7 +90,6 @@ const onCreateFinalOrder = (event) => {
       total: total
     }
   }
-  console.log(data)
   api.createFinalOrder(data)
     .then(ui.createFinalOrderSuccess)
     .catch(ui.failure)
