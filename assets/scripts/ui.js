@@ -22,6 +22,7 @@ const onSignInSuccess = (responseData) => {
   $('#order-history-button').show()
   $('#sign-up-button').hide()
   $('#sign-in-button').hide()
+  $('#stock-image').hide()
   store.user = responseData.user
 }
 const onSignInFailure = () => {
