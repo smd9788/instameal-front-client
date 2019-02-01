@@ -49,11 +49,13 @@ const onGetMeals = (event) => {
 const onCreateOrder = (event) => {
   event.preventDefault()
   console.log(event)
+  const mealName = event.target.parentNode.parentNode.childNodes['1'].innerText
   const price = event.target.dataset.price
   const id = event.target.dataset.id
   const quantity = parseInt(getFormFields(event.target).quantity)
   const total = parseFloat(price) * quantity
-  $('#current-order').html(`<h5>Order Total: ${total}</h5>`)
+  $('#current-order').html(`<h5>Added ${quantity} ${mealName} to cart</h5>`)
+  $('#current-order').append(`<h5>Order Total: ${total}</h5>`)
 
   const data = {
     order: {
@@ -69,9 +71,29 @@ const onCreateOrder = (event) => {
     .catch(ui.failure)
 }
 
+const onCreateFinalOrder = (event) => {
+  event.preventDefault()
+  console.log(event)
+  const price = event.target.dataset.price
+  const quantity = parseInt(getFormFields(event.target).quantity)
+  const total = parseFloat(price) * quantity
+  // $('#current-order').html(`<h5>Order Total: ${total}</h5>`)
+
+  const data = {
+    final_order: {
+      user_id: store.user.id,
+      total: total
+    }
+  }
+  console.log(data)
+  api.createFinalOrder(data)
+    .then(ui.createFinalOrderSuccess)
+    .catch(ui.failure)
+}
+
 const addHandlers = () => {
   $('body').on('submit', '.order-meal-button', onCreateOrder)
-  // $('.content').on('click', '.delete-meal', onDeleteMeal)
+  $('body').on('submit', '.order-meal-button', onCreateFinalOrder)
 }
 
 module.exports = {
@@ -81,5 +103,6 @@ module.exports = {
   onSignOut,
   onGetMeals,
   addHandlers,
-  onCreateOrder
+  onCreateOrder,
+  onCreateFinalOrder
 }

@@ -57,6 +57,18 @@ const createOrder = (formData) => {
   })
 }
 
+const createFinalOrder = (formData) => {
+  return $.ajax({
+    url: config.apiUrl + '/final_orders',
+    method: 'POST',
+    headers: {
+      contentType: 'application/json',
+      Authorization: 'Token token=' + store.user.token
+    },
+    data: formData
+  })
+}
+
 module.exports = {
   signUp,
   signIn,
@@ -64,5 +76,6 @@ module.exports = {
   signOut,
   store,
   createOrder,
-  getMeals
+  getMeals,
+  createFinalOrder
 }
