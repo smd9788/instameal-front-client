@@ -1,7 +1,6 @@
 'use strict'
 const store = require('./store')
 const showMealsTemplate = require('./templates/get-meals.handlebars')
-const createOrderTemplate = require('./templates/create-order.handlebars')
 
 $('#change-password-button').hide()
 $('#sign-out-button').hide()
@@ -56,7 +55,6 @@ const getMealsSuccess = (data) => {
 const createOrderSuccess = (response) => {
   const orderData = response.order
   store.order = orderData
-  $('.box').html('')
   $('#user-message').text('Order started. Add your meals now.')
 }
 

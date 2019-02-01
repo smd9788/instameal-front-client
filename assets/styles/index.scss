@@ -1,9 +1,9 @@
 @import '~bootstrap/scss/bootstrap';
-
 $primary-color: #00bf1f;
 $secondary-color: #eaeaea;
 
 * {
+  font-family: 'Poiret One';
   margin: 0;
   padding: 0;
 }
@@ -11,8 +11,17 @@ $secondary-color: #eaeaea;
 nav {
   background-color: $primary-color;
   font-size: 1.5rem;
-  height: 4rem;
+  height: 6rem;
   margin: 1px 0;
+}
+
+.navbar-brand {
+  background-color: $secondary-color;
+  color: $primary-color;
+  font-family: 'Poiret One';
+  font-size: 2rem;
+  font-weight: bold;
+  padding: 17px 6px;
 }
 
 body {
@@ -26,6 +35,13 @@ header {
   margin: 0 auto;
   text-align: center;
   width: 100%;
+}
+
+.stock-image {
+  display: block;
+  margin: auto;
+  opacity: .5;
+  width: 70%;
 }
 
 h1 {
@@ -59,4 +75,13 @@ input {
   background-color: $primary-color;
   color: $secondary-color;
   display: flex;
+}
+
+#getMealsButton {
+  margin: 30px;
+}
+
+#current-order {
+  background-color: rgba(11, 241, 15, .3); // primary color with less opacity
+  color: black;
 }

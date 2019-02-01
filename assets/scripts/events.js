@@ -17,7 +17,7 @@ const onSignIn = (event) => {
   event.preventDefault()
   const formData = getFormFields(event.target)
   api.signIn(formData)
-    .then(ui.onSignInSuccess)
+    .then(ui.onSignInSuccess, onGetMeals(event))
     .catch(ui.onSignInFailure)
   $('form').trigger('reset')
 }
@@ -51,12 +51,9 @@ const onCreateOrder = (event) => {
   console.log(event)
   const price = event.target.dataset.price
   const id = event.target.dataset.id
-  console.log(price)
   const quantity = parseInt(getFormFields(event.target).quantity)
-  console.log(quantity)
   const total = parseFloat(price) * quantity
-  console.log(total)
-  event.target.parentNode.firstElementChild.innerHTML = `<p>Sum is ${total}</p>`
+  $('#current-order').html(`<h5>Order Total: ${total}</h5>`)
 
   const data = {
     order: {
@@ -73,7 +70,6 @@ const onCreateOrder = (event) => {
 }
 
 const addHandlers = () => {
-  $('#getMealsButton').on('click', onGetMeals)
   $('body').on('submit', '.order-meal-button', onCreateOrder)
   // $('.content').on('click', '.delete-meal', onDeleteMeal)
 }
