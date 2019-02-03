@@ -6,6 +6,8 @@ const addMealsTemplate = require('./templates/add-meals.handlebars')
 $('#change-password-button').hide()
 $('#sign-out-button').hide()
 $('#order-history-button').hide()
+$('#menu-container').hide()
+$('#checkout-button').hide()
 
 // AUTHENTICATION API UI MESSAGING
 
@@ -21,6 +23,7 @@ const onSignInSuccess = (responseData) => {
   $('#change-password-button').show()
   $('#sign-out-button').show()
   $('#order-history-button').show()
+  $('#menu-container').show()
   $('#sign-up-button').hide()
   $('#sign-in-button').hide()
   $('#stock-image').hide()
@@ -68,6 +71,14 @@ const createOrderSuccess = (response) => {
   const orderData = response.order
   store.order = orderData
   $('#user-message').text('Order started. Add your meals now.')
+  $('#checkout-button').show()
+}
+
+const createFinalOrderSuccess = (response) => {
+  const orderData = response.order
+  store.final_order = orderData
+  $('#user-message').hide()
+  $('#current-order').html('Order complete! Please check your email for tracking info')
 }
 
 module.exports = {
@@ -81,5 +92,6 @@ module.exports = {
   onSignOutFailure,
   getMealsSuccess,
   createOrderSuccess,
-  addMealsSuccess
+  addMealsSuccess,
+  createFinalOrderSuccess
 }

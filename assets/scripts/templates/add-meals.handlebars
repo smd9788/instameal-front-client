@@ -4,9 +4,10 @@
     <div class="card-body">
       <h4 class="card-title" data-id="{{order.id}}"> <small>{{mealName}}</small></h4>
       <section data-id="{{order.id}}">
+        <h5>{{order.quantity}}</h5>
         <p>{{total}}</p>
         <form class="order-meal-button" data-price="{{price}}" data-id="{{order.id}}">
-          <button type="submit" class="btn btn-default add-meal">Remove</button>
+          <button type="submit" class="btn btn-default remove-meal">Remove</button>
         </form>
       </section>
     </div>
