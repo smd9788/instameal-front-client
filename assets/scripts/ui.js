@@ -75,7 +75,7 @@ const createOrderSuccess = (response) => {
 }
 
 const createFinalOrderSuccess = (response) => {
-  const orderData = response.order
+  const orderData = response.final_order
   store.final_order = orderData
   $('#user-message').hide()
   $('#current-order').html('Order complete! Please check your email for tracking info')
