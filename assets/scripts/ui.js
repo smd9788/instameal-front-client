@@ -63,7 +63,6 @@ const addMealsSuccess = (data, total, mealName) => {
     total: total,
     mealName: mealName
   })
-  // $('#current-order').append(addMealsHtml)
   $('#menu-card').append(addMealsHtml)
 }
 

@@ -57,7 +57,7 @@ const createOrder = (formData) => {
   })
 }
 
-const deleteOrder = () => {
+const deleteOrder = (event) => {
   return $.ajax({
     url: config.apiUrl + '/orders/' + store.order.id,
     method: 'DELETE',

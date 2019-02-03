@@ -91,7 +91,6 @@ const onCreateFinalOrder = (event) => {
 
 const onDeleteOrder = (event) => {
   event.preventDefault()
-  console.log(event)
   // const mealName = event.target.parentNode.parentNode.childNodes['1'].innerText
   // const price = event.target.dataset.price
   // const quantity = parseInt(getFormFields(event.target).quantity)
@@ -101,13 +100,13 @@ const onDeleteOrder = (event) => {
   // $('#cart-message').html(`<h5>Removed ${quantity} ${mealName} from cart</h5>`)
   // $('#cart-message').append(`<h5>Order Total: ${Math.round(store.price * 100) / 100}</h5>`)
   api.deleteOrder()
-    .then(ui.deleteOrderSuccess)
+  $(event.target.offsetParent).remove()
 }
 
 const addHandlers = () => {
   $('body').on('submit', '.order-meal-button', onCreateOrder)
   $('#checkout-button').on('click', onCreateFinalOrder)
-  $('div').on('submit', '.remove-meal-button', onDeleteOrder)
+  $('#current-order').on('click', '.remove-meal-button', onDeleteOrder)
 }
 
 module.exports = {
