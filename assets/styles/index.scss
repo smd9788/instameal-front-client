@@ -67,6 +67,12 @@ button {
   padding: 15px;
 }
 
+.btn-primary {
+  background-color: $secondary-color;
+  color: black;
+  font-weight: bold;
+}
+
 input {
   border: 1px solid;
 }

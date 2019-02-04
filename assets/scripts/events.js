@@ -57,8 +57,8 @@ const onCreateOrder = (event) => {
   const quantity = parseInt(getFormFields(event.target).quantity)
   const total = parseFloat(price) * quantity
   store.price += total
-  $('#tooltip').html(`<h5>Added ${quantity} ${mealName} to cart</h5>`)
-  $('#tooltip').append(`<h5>Order Total: ${Math.round(store.price * 100) / 100}</h5>`)
+  $('#cart-message').html(`<h5>Added ${quantity} ${mealName} to cart</h5>`)
+  $('#cart-message').append(`<h5>Order Total: ${Math.round(store.price * 100) / 100}</h5>`)
   const data = {
     order: {
       user_id: store.user.id,
@@ -78,16 +78,10 @@ const onCreateOrder = (event) => {
 
 const onCreateFinalOrder = (event) => {
   event.preventDefault()
-  console.log(event)
-  const price = event.target.dataset.price
-  const quantity = parseInt(getFormFields(event.target).quantity)
-  const total = parseFloat(price) * quantity
-  // $('#current-order').html(`<h5>Order Total: ${total}</h5>`)
-
   const data = {
     final_order: {
       user_id: store.user.id,
-      total: total
+      total: store.price
     }
   }
   api.createFinalOrder(data)
@@ -95,9 +89,24 @@ const onCreateFinalOrder = (event) => {
     .catch(ui.failure)
 }
 
+const onDeleteOrder = (event) => {
+  event.preventDefault()
+  // const mealName = event.target.parentNode.parentNode.childNodes['1'].innerText
+  // const price = event.target.dataset.price
+  // const quantity = parseInt(getFormFields(event.target).quantity)
+  // const total = parseFloat(price) * quantity
+  // store.price -= total
+  //
+  // $('#cart-message').html(`<h5>Removed ${quantity} ${mealName} from cart</h5>`)
+  // $('#cart-message').append(`<h5>Order Total: ${Math.round(store.price * 100) / 100}</h5>`)
+  api.deleteOrder()
+  $(event.target.offsetParent).remove()
+}
+
 const addHandlers = () => {
   $('body').on('submit', '.order-meal-button', onCreateOrder)
-  $('body').on('submit', '.order-meal-button', onCreateFinalOrder)
+  $('#checkout-button').on('click', onCreateFinalOrder)
+  $('#current-order').on('click', '.remove-meal-button', onDeleteOrder)
 }
 
 module.exports = {

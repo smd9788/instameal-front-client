@@ -57,6 +57,16 @@ const createOrder = (formData) => {
   })
 }
 
+const deleteOrder = (event) => {
+  return $.ajax({
+    url: config.apiUrl + '/orders/' + store.order.id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
+
 const createFinalOrder = (formData) => {
   return $.ajax({
     url: config.apiUrl + '/final_orders',
@@ -77,5 +87,6 @@ module.exports = {
   store,
   createOrder,
   getMeals,
-  createFinalOrder
+  createFinalOrder,
+  deleteOrder
 }
