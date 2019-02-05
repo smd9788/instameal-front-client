@@ -55,7 +55,7 @@ const onCreateOrder = (event) => {
 
   const id = event.target.dataset.id
   const quantity = parseInt(getFormFields(event.target).quantity)
-  const total = parseFloat(price) * quantity
+  const total = Math.round(parseFloat(price) * quantity * 100) / 100
   store.price += total
   $('#cart-message').html(`<h5>Added ${quantity} ${mealName} to cart</h5>`)
   $('#cart-message').append(`<h5>Order Total: ${Math.round(store.price * 100) / 100}</h5>`)
