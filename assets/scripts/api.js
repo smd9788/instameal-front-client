@@ -59,7 +59,7 @@ const createOrder = (formData) => {
 
 const deleteOrder = (event) => {
   return $.ajax({
-    url: config.apiUrl + '/orders/' + store.order.id,
+    url: config.apiUrl + '/orders/' + event,
     method: 'DELETE',
     headers: {
       Authorization: 'Token token=' + store.user.token

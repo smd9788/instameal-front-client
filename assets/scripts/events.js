@@ -91,6 +91,10 @@ const onCreateFinalOrder = (event) => {
 
 const onDeleteOrder = (event) => {
   event.preventDefault()
+  const orderId = event.target.parentNode.dataset.id
+  // const orderId = $(event.target).data('orders')
+
+  // const orderId = $(event.target).data('orders')
   // const mealName = event.target.parentNode.parentNode.childNodes['1'].innerText
   // const price = event.target.dataset.price
   // const quantity = parseInt(getFormFields(event.target).quantity)
@@ -99,7 +103,8 @@ const onDeleteOrder = (event) => {
   //
   // $('#cart-message').html(`<h5>Removed ${quantity} ${mealName} from cart</h5>`)
   // $('#cart-message').append(`<h5>Order Total: ${Math.round(store.price * 100) / 100}</h5>`)
-  api.deleteOrder()
+
+  api.deleteOrder(orderId)
   $(event.target.offsetParent).remove()
 }
 
