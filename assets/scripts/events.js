@@ -58,7 +58,7 @@ const onCreateOrder = (event) => {
   const total = Math.round(parseFloat(price) * quantity * 100) / 100
   store.price += total
   $('#cart-message').html(`<h5>Added ${quantity} ${mealName} to cart</h5>`)
-  $('#cart-message').append(`<h5>Order Total: ${Math.round(store.price * 100) / 100}</h5>`)
+  $('#final-total-message').html(`<h5>Order Total: ${Math.round(store.price * 100) / 100}</h5>`)
   const data = {
     order: {
       user_id: store.user.id,
@@ -74,6 +74,27 @@ const onCreateOrder = (event) => {
       ui.addMealsSuccess(response, total, mealName)
     })
     .catch(ui.failure)
+  return store.price
+}
+
+const onDeleteOrder = (event) => {
+  event.preventDefault()
+  const orderId = event.target.parentNode.dataset.id
+  // const quantity = event.target.parentNode.dataset.quantity
+  let subtotal = event.target.parentNode.dataset.price
+  subtotal = parseFloat(subtotal)
+  store.price -= subtotal
+  // send order id of target order card to API and DELETE that id
+  api.deleteOrder(orderId)
+  // adjust total on screen
+  console.log(event)
+
+  // total -= store.price
+  $('#cart-message').html(`<h5>Removed items from cart</h5>`)
+  $('#final-total-message').html(`<h5>Order Total: ${Math.round(store.price * 100) / 100}</h5>`)
+
+  // remove HTML card from cart
+  $(event.target.offsetParent).remove()
 }
 
 const onCreateFinalOrder = (event) => {
@@ -87,25 +108,6 @@ const onCreateFinalOrder = (event) => {
   api.createFinalOrder(data)
     .then(ui.createFinalOrderSuccess)
     .catch(ui.failure)
-}
-
-const onDeleteOrder = (event) => {
-  event.preventDefault()
-  const orderId = event.target.parentNode.dataset.id
-  // const orderId = $(event.target).data('orders')
-
-  // const orderId = $(event.target).data('orders')
-  // const mealName = event.target.parentNode.parentNode.childNodes['1'].innerText
-  // const price = event.target.dataset.price
-  // const quantity = parseInt(getFormFields(event.target).quantity)
-  // const total = parseFloat(price) * quantity
-  // store.price -= total
-  //
-  // $('#cart-message').html(`<h5>Removed ${quantity} ${mealName} from cart</h5>`)
-  // $('#cart-message').append(`<h5>Order Total: ${Math.round(store.price * 100) / 100}</h5>`)
-
-  api.deleteOrder(orderId)
-  $(event.target.offsetParent).remove()
 }
 
 const addHandlers = () => {

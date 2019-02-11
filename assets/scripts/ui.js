@@ -58,9 +58,10 @@ const getMealsSuccess = (data) => {
 }
 
 const addMealsSuccess = (data, total, mealName) => {
-  console.log('data id is:', data.order.id)
+  console.log('data is:', data)
   const addMealsHtml = addMealsTemplate({
     orders: data.order.id,
+    quantity: data.order.quantity,
     meals: data.order,
     total: total,
     mealName: mealName
