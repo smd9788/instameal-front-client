@@ -45,6 +45,13 @@ const getMeals = function () {
   })
 }
 
+const getFinalOrders = function () {
+  return $.ajax({
+    url: config.apiUrl + '/final_orders',
+    method: 'GET'
+  })
+}
+
 const createOrder = (formData) => {
   return $.ajax({
     url: config.apiUrl + '/orders',
@@ -88,5 +95,6 @@ module.exports = {
   createOrder,
   getMeals,
   createFinalOrder,
-  deleteOrder
+  deleteOrder,
+  getFinalOrders
 }

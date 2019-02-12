@@ -2,6 +2,7 @@
 const store = require('./store')
 const showMealsTemplate = require('./templates/get-meals.handlebars')
 const addMealsTemplate = require('./templates/add-meals.handlebars')
+const orderHistoryTemplate = require('./templates/get-finalorders.handlebars')
 
 $('#change-password-button').hide()
 $('#sign-out-button').hide()
@@ -56,6 +57,13 @@ const getMealsSuccess = (data) => {
   })
   $('#menu-cards').html(showMealsHtml)
 }
+const getFinalOrdersSuccess = (data) => {
+  console.log('from UI data is:', data)
+  const orderHistoryModal = orderHistoryTemplate({
+    final_orders: data.final_orders
+  })
+  $('#order-history-list').html(orderHistoryModal)
+}
 
 const addMealsSuccess = (data, total, mealName) => {
   console.log('data is:', data)
@@ -95,5 +103,6 @@ module.exports = {
   getMealsSuccess,
   createOrderSuccess,
   addMealsSuccess,
-  createFinalOrderSuccess
+  createFinalOrderSuccess,
+  getFinalOrdersSuccess
 }

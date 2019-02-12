@@ -83,6 +83,17 @@ input {
   display: flex;
 }
 
+.final-order-listItem {
+  font-family: arial;
+}
+
+.total-price-on-modal {
+  color: #000;
+  font-family: arial;
+  text-decoration-line: underline;
+  text-indent: 2em;
+}
+
 #getMealsButton {
   margin: 30px;
 }

@@ -110,10 +110,19 @@ const onCreateFinalOrder = (event) => {
     .catch(ui.failure)
 }
 
+const onGetFinalOrders = (event) => {
+  event.preventDefault()
+  console.log('from EVENTS event is:', event)
+  api.getFinalOrders()
+    .then(ui.getFinalOrdersSuccess)
+    .catch(ui.failure)
+}
+
 const addHandlers = () => {
   $('body').on('submit', '.order-meal-button', onCreateOrder)
   $('#checkout-button').on('click', onCreateFinalOrder)
   $('#current-order').on('click', '.remove-meal-button', onDeleteOrder)
+  $('nav').on('click', '#order-history-button', onGetFinalOrders)
 }
 
 module.exports = {
