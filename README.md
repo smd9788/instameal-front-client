@@ -25,8 +25,6 @@ AJAX requests from preconfigured API
 
 Unsolved Problems/Missing features:
 
-- Fix delete order function. Removes render on front-end, but doesn't recalc total, and
-  deletes only the most recent order, not the one targeted
 - Add order history feature. GET request on final_orders
 - Update UI for after checkout
 - Update footer text

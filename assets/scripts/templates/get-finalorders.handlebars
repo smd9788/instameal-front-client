@@ -1,0 +1,4 @@
+{{#each final_orders as |final_order|}}
+  <p class="final-order-listItem" data-id="{{final_order.id}}">Order Number: {{final_order.id}}</p>
+  <p class="total-price-on-modal">Total: ${{final_order.total}}</p>
+{{/each}}

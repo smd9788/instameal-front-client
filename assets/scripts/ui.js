@@ -2,6 +2,7 @@
 const store = require('./store')
 const showMealsTemplate = require('./templates/get-meals.handlebars')
 const addMealsTemplate = require('./templates/add-meals.handlebars')
+const orderHistoryTemplate = require('./templates/get-finalorders.handlebars')
 
 $('#change-password-button').hide()
 $('#sign-out-button').hide()
@@ -39,12 +40,6 @@ const onChangePasswordFailure = () => {
   $('#user-message').text('error. invalid new password')
 }
 const onSignOutSuccess = (responseData) => {
-  $('#user-message').text('user signed out successfully')
-  $('#change-password-button').hide()
-  $('#sign-out-button').hide()
-  $('#order-history-button').hide()
-  $('#sign-up-button').show()
-  $('#sign-in-button').show()
   store.user = null
 }
 const onSignOutFailure = () => {
@@ -56,9 +51,21 @@ const getMealsSuccess = (data) => {
   })
   $('#menu-cards').html(showMealsHtml)
 }
-
+const getFinalOrdersSuccess = (data) => {
+  const orderHistoryModal = orderHistoryTemplate({
+    final_orders: data.final_orders
+  })
+  console.log(data.final_orders.length)
+  if (data.final_orders.length < 1) {
+    $('#order-history-list').text('You have not ordered anything yet')
+  } else {
+    $('#order-history-list').html(orderHistoryModal)
+  }
+}
 const addMealsSuccess = (data, total, mealName) => {
   const addMealsHtml = addMealsTemplate({
+    orders: data.order.id,
+    quantity: data.order.quantity,
     meals: data.order,
     total: total,
     mealName: mealName
@@ -77,7 +84,14 @@ const createFinalOrderSuccess = (response) => {
   const orderData = response.final_order
   store.final_order = orderData
   $('#user-message').hide()
-  $('#current-order').html('Order complete! Please check your email for tracking info')
+  $('#menu-cards').hide()
+  $('#current-order').hide()
+  $('#stock-image').show()
+  $('#checkout-message').text('Order complete! Please check your email for tracking info')
+}
+
+const failure = () => {
+  $('#user-message').text('error. something went wrong. refresh the page and try again')
 }
 
 module.exports = {
@@ -92,5 +106,7 @@ module.exports = {
   getMealsSuccess,
   createOrderSuccess,
   addMealsSuccess,
-  createFinalOrderSuccess
+  createFinalOrderSuccess,
+  getFinalOrdersSuccess,
+  failure
 }

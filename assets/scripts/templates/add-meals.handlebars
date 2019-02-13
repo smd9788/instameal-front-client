@@ -1,11 +1,11 @@
 {{log order}}
 <div class="card" class="cart-card" style="width: 18rem;">
   <div class="card-body">
-    <h4 class="card-title" data-id="{{order.id}}"> <small>{{mealName}}</small></h4>
-    <section data-id="{{order.id}}">
-      <h5>{{order.quantity}}</h5>
+    <h4 class="card-title" data-id="{{orders}}"> <small>{{mealName}}</small></h4>
+    <h7>x{{quantity}}</h7>
+    <section data-id="{{orders}}">
       <p>{{total}}</p>
-      <form class="remove-meal-button" data-price="{{price}}" data-id="{{order.id}}">
+      <form class="remove-meal-button" data-price="{{total}}" data-id="{{orders}}" data-quantity="{{quantity}}">
         <button id="remove-meal-button" type="submit" class="btn btn-default">Remove</button>
       </form>
     </section>

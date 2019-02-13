@@ -24,6 +24,10 @@ nav {
   padding: 17px 6px;
 }
 
+.checkout-message {
+  font-size: 3rem;
+}
+
 body {
   background: $secondary-color;
   color: $primary-color;
@@ -81,6 +85,17 @@ input {
   background-color: $primary-color;
   color: $secondary-color;
   display: flex;
+}
+
+.final-order-listItem {
+  font-family: arial;
+}
+
+.total-price-on-modal {
+  color: #000;
+  font-family: arial;
+  text-decoration-line: underline;
+  text-indent: 2em;
 }
 
 #getMealsButton {
