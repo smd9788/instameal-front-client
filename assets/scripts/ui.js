@@ -94,6 +94,10 @@ const createFinalOrderSuccess = (response) => {
   $('#checkout-message').text('Order complete! Please check your email for tracking info')
 }
 
+const failure = () => {
+  $('#user-message').text('error. something went wrong. refresh the page and try again')
+}
+
 module.exports = {
   onSignUpSuccess,
   onSignUpFailure,
@@ -107,5 +111,6 @@ module.exports = {
   createOrderSuccess,
   addMealsSuccess,
   createFinalOrderSuccess,
-  getFinalOrdersSuccess
+  getFinalOrdersSuccess,
+  failure
 }
