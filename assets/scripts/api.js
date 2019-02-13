@@ -45,10 +45,13 @@ const getMeals = function () {
   })
 }
 
-const getFinalOrders = function () {
+const getFinalOrders = function (formData) {
   return $.ajax({
     url: config.apiUrl + '/final_orders',
-    method: 'GET'
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
   })
 }
 

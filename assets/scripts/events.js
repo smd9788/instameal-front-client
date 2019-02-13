@@ -114,7 +114,7 @@ const onCreateFinalOrder = (event) => {
 const onGetFinalOrders = (event) => {
   event.preventDefault()
   console.log('from EVENTS event is:', event)
-  api.getFinalOrders()
+  api.getFinalOrders(event)
     .then(ui.getFinalOrdersSuccess)
     .catch(ui.failure)
 }

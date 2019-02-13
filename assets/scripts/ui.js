@@ -52,15 +52,17 @@ const getMealsSuccess = (data) => {
   $('#menu-cards').html(showMealsHtml)
 }
 const getFinalOrdersSuccess = (data) => {
-  console.log('from UI data is:', data)
   const orderHistoryModal = orderHistoryTemplate({
     final_orders: data.final_orders
   })
-  $('#order-history-list').html(orderHistoryModal)
+  console.log(data.final_orders.length)
+  if (data.final_orders.length < 1) {
+    $('#order-history-list').text('You have not ordered anything yet')
+  } else {
+    $('#order-history-list').html(orderHistoryModal)
+  }
 }
-
 const addMealsSuccess = (data, total, mealName) => {
-  console.log('data is:', data)
   const addMealsHtml = addMealsTemplate({
     orders: data.order.id,
     quantity: data.order.quantity,
