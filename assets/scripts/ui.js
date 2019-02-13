@@ -88,7 +88,10 @@ const createFinalOrderSuccess = (response) => {
   const orderData = response.final_order
   store.final_order = orderData
   $('#user-message').hide()
-  $('#current-order').html('Order complete! Please check your email for tracking info')
+  $('#menu-cards').hide()
+  $('#current-order').hide()
+  $('#stock-image').show()
+  $('#checkout-message').text('Order complete! Please check your email for tracking info')
 }
 
 module.exports = {
