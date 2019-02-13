@@ -71,10 +71,15 @@ button {
   padding: 15px;
 }
 
-.btn-primary {
+.menu-item {
   background-color: $secondary-color;
   color: black;
   font-weight: bold;
+}
+
+.add-meal {
+  background-color: $primary-color;
+  color: $secondary-color;
 }
 
 input {
@@ -99,6 +104,8 @@ input {
 }
 
 #getMealsButton {
+  background-color: $primary-color;
+  color: $secondary-color;
   margin: 30px;
 }
 
