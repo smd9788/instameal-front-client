@@ -36,8 +36,7 @@ const onSignOut = (event) => {
   api.signOut()
     .then(ui.onSignOutSuccess)
     .catch(ui.onSignOutFailure)
-  $('#change-password').hide()
-  $('#sign-out').hide()
+  location.reload()
 }
 
 const onGetMeals = (event) => {

@@ -40,12 +40,6 @@ const onChangePasswordFailure = () => {
   $('#user-message').text('error. invalid new password')
 }
 const onSignOutSuccess = (responseData) => {
-  $('#user-message').text('user signed out successfully')
-  $('#change-password-button').hide()
-  $('#sign-out-button').hide()
-  $('#order-history-button').hide()
-  $('#sign-up-button').show()
-  $('#sign-in-button').show()
   store.user = null
 }
 const onSignOutFailure = () => {
