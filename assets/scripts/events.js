@@ -74,6 +74,7 @@ const onCreateOrder = (event) => {
       ui.addMealsSuccess(response, total, mealName)
     })
     .catch(ui.failure)
+  $('form').trigger('reset')
   return store.price
 }
 
