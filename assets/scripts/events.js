@@ -56,24 +56,27 @@ const onCreateOrder = (event) => {
   const id = event.target.dataset.id
   const quantity = parseInt(getFormFields(event.target).quantity)
   const total = Math.round(parseFloat(price) * quantity * 100) / 100
-  store.price += total
-  $('#cart-message').html(`<h5>Added ${quantity} ${mealName} to cart</h5>`)
-  $('#final-total-message').html(`<h5>Order Total: ${Math.round(store.price * 100) / 100}</h5>`)
-  const data = {
-    order: {
-      user_id: store.user.id,
-      meal_id: id,
-      total: total,
-      quantity: quantity
+  if (quantity > 0) {
+    store.price += total
+    const data = {
+      order: {
+        user_id: store.user.id,
+        meal_id: id,
+        total: total,
+        quantity: quantity
+      }
     }
+    api.createOrder(data)
+      .then((response) => {
+        ui.createOrderSuccess(response)
+        ui.addMealsSuccess(response, total, mealName)
+      })
+      .catch(ui.failure)
+
+    $('#cart-message').html(`<h5>Added ${quantity} ${mealName} to cart</h5>`)
+    $('#final-total-message').html(`<h5>Order Total: ${Math.round(store.price * 100) / 100}</h5>`)
   }
 
-  api.createOrder(data)
-    .then((response) => {
-      ui.createOrderSuccess(response)
-      ui.addMealsSuccess(response, total, mealName)
-    })
-    .catch(ui.failure)
   $('form').trigger('reset')
   return store.price
 }
