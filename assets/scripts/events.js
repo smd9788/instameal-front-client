@@ -7,7 +7,6 @@ const store = require('./store')
 const onSignUp = (event) => {
   event.preventDefault()
   const formData = getFormFields(event.target)
-  console.log(formData)
   api.signUp(formData)
     .then(ui.onSignUpSuccess)
     .catch(ui.onSignUpFailure)
@@ -48,7 +47,6 @@ const onGetMeals = (event) => {
 
 const onCreateOrder = (event) => {
   event.preventDefault()
-  console.log(event)
 
   const mealName = event.target.parentNode.parentNode.childNodes['1'].innerText
   const price = event.target.dataset.price
@@ -91,9 +89,7 @@ const onDeleteOrder = (event) => {
   // send order id of target order card to API and DELETE that id
   api.deleteOrder(orderId)
   // adjust total on screen
-  console.log(event)
 
-  // total -= store.price
   $('#cart-message').html(`<h5>Removed items from cart</h5>`)
   $('#final-total-message').html(`<h5>Order Total: ${Math.round(store.price * 100) / 100}</h5>`)
 
@@ -116,7 +112,6 @@ const onCreateFinalOrder = (event) => {
 
 const onGetFinalOrders = (event) => {
   event.preventDefault()
-  console.log('from EVENTS event is:', event)
   api.getFinalOrders(event)
     .then(ui.getFinalOrdersSuccess)
     .catch(ui.failure)

@@ -55,7 +55,6 @@ const getFinalOrdersSuccess = (data) => {
   const orderHistoryModal = orderHistoryTemplate({
     final_orders: data.final_orders
   })
-  console.log(data.final_orders.length)
   if (data.final_orders.length < 1) {
     $('#order-history-list').text('You have not ordered anything yet')
   } else {
