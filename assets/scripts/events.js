@@ -117,6 +117,8 @@ const onGetFinalOrders = (event) => {
     .catch(ui.failure)
 }
 
+// $('nav').on('click', '#order-again-button', onGetMeals(event))
+
 const addHandlers = () => {
   $('body').on('submit', '.order-meal-button', onCreateOrder)
   $('#checkout-button').on('click', onCreateFinalOrder)
