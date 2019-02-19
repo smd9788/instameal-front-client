@@ -11,12 +11,12 @@ order history button to retrieve a list of their past final_orders.
 
 Rails API Repository:
 https://github.com/smd9788/instameal-API-client
-Deployed rails server:
+Deployed Rails server:
 https://instameal-api-client.herokuapp.com/
 
 Front-end Client Repository:
 https://github.com/smd9788/instameal-front-client
-Deployed client website:
+Deployed Client Website:
 https://smd9788.github.io/instameal-front-client/
 
 
@@ -25,18 +25,17 @@ https://imgur.com/a/HiGjYKA
 
 Technologies Used:
 
-JavaScript
 HTML
 CSS
+JavaScript
 jQuery
 Ruby on Rails
 Handlebars
-AJAX requests from preconfigured API
-
+Bootstrap
 
 Unsolved Problems/Missing features:
 
-- Update footer text
+- Update footer text/links
 - Update style and format of menu cards and shopping cart
 
 User stories:

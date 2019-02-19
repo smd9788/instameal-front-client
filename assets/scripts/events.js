@@ -7,7 +7,6 @@ const store = require('./store')
 const onSignUp = (event) => {
   event.preventDefault()
   const formData = getFormFields(event.target)
-  console.log(formData)
   api.signUp(formData)
     .then(ui.onSignUpSuccess)
     .catch(ui.onSignUpFailure)
@@ -48,7 +47,6 @@ const onGetMeals = (event) => {
 
 const onCreateOrder = (event) => {
   event.preventDefault()
-  console.log(event)
 
   const mealName = event.target.parentNode.parentNode.childNodes['1'].innerText
   const price = event.target.dataset.price
@@ -56,24 +54,27 @@ const onCreateOrder = (event) => {
   const id = event.target.dataset.id
   const quantity = parseInt(getFormFields(event.target).quantity)
   const total = Math.round(parseFloat(price) * quantity * 100) / 100
-  store.price += total
-  $('#cart-message').html(`<h5>Added ${quantity} ${mealName} to cart</h5>`)
-  $('#final-total-message').html(`<h5>Order Total: ${Math.round(store.price * 100) / 100}</h5>`)
-  const data = {
-    order: {
-      user_id: store.user.id,
-      meal_id: id,
-      total: total,
-      quantity: quantity
+  if (quantity > 0) {
+    store.price += total
+    const data = {
+      order: {
+        user_id: store.user.id,
+        meal_id: id,
+        total: total,
+        quantity: quantity
+      }
     }
+    api.createOrder(data)
+      .then((response) => {
+        ui.createOrderSuccess(response)
+        ui.addMealsSuccess(response, total, mealName)
+      })
+      .catch(ui.failure)
+
+    $('#cart-message').html(`<h5>Added ${quantity} ${mealName} to cart</h5>`)
+    $('#final-total-message').html(`<h5>Order Total: ${Math.round(store.price * 100) / 100}</h5>`)
   }
 
-  api.createOrder(data)
-    .then((response) => {
-      ui.createOrderSuccess(response)
-      ui.addMealsSuccess(response, total, mealName)
-    })
-    .catch(ui.failure)
   $('form').trigger('reset')
   return store.price
 }
@@ -88,9 +89,7 @@ const onDeleteOrder = (event) => {
   // send order id of target order card to API and DELETE that id
   api.deleteOrder(orderId)
   // adjust total on screen
-  console.log(event)
 
-  // total -= store.price
   $('#cart-message').html(`<h5>Removed items from cart</h5>`)
   $('#final-total-message').html(`<h5>Order Total: ${Math.round(store.price * 100) / 100}</h5>`)
 
@@ -113,11 +112,12 @@ const onCreateFinalOrder = (event) => {
 
 const onGetFinalOrders = (event) => {
   event.preventDefault()
-  console.log('from EVENTS event is:', event)
   api.getFinalOrders(event)
     .then(ui.getFinalOrdersSuccess)
     .catch(ui.failure)
 }
+
+// $('nav').on('click', '#order-again-button', onGetMeals(event))
 
 const addHandlers = () => {
   $('body').on('submit', '.order-meal-button', onCreateOrder)
