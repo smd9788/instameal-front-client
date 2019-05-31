@@ -11,11 +11,13 @@ pressing the checkout button. This will send the total price to the final_orders
 table, which has a unique relationship with each user. Users can click the
 order history button to retrieve a list of their past final_orders.
 
-#### [Rails API Repository:](https://github.com/smd9788/instameal-API-client)
-#### [Deployed Rails server:](https://instameal-api-client.herokuapp.com/)
-
-#### [Front-end Client Repository:](https://github.com/smd9788/instameal-front-client)
-#### [Deployed Client Website:](https://smd9788.github.io/instameal-front-client/)
+#### [Rails API Repository](https://github.com/smd9788/instameal-API-client)
+#### [Deployed Rails server](https://instameal-api-client.herokuapp.com/)
+#### [Front-end Client Repository](https://github.com/smd9788/instameal-front-client)
+#### [Deployed Client Website](https://smd9788.github.io/instameal-front-client/)
+\
+\
+### Wireframe and ERD:
 
 <img src="https://i.imgur.com/1nd97CV.jpg" width="450" height="650">
 
