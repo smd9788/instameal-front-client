@@ -17,8 +17,7 @@ order history button to retrieve a list of their past final_orders.
 #### [Front-end Client Repository:](https://github.com/smd9788/instameal-front-client)
 #### [Deployed Client Website:](https://smd9788.github.io/instameal-front-client/)
 
-
-#### [Wireframes/ERD:](https://imgur.com/a/HiGjYKA)
+<img src="https://i.imgur.com/1nd97CV.jpg" width="450" height="650">
 
 #### Technologies used in this repo:
 
