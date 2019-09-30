@@ -7,7 +7,6 @@ const orderHistoryTemplate = require('./templates/get-finalorders.handlebars')
 $('#change-password-button').hide()
 $('#sign-out-button').hide()
 $('#order-history-button').hide()
-// $('#order-again-button').hide()
 $('#menu-container').hide()
 $('#checkout-button').hide()
 
@@ -70,14 +69,16 @@ const getFinalOrdersSuccess = (data) => {
     $('#order-history-list').html(orderHistoryModal)
   }
 }
-const addMealsSuccess = (data, total, mealName) => {
+const addMealsSuccess = (data, total, price, mealName) => {
   const addMealsHtml = addMealsTemplate({
     orders: data.order.id,
     quantity: data.order.quantity,
     meals: data.order,
+    price: price,
     total: total,
     mealName: mealName
   })
+  console.log(data)
   $('#menu-card').append(addMealsHtml)
 }
 

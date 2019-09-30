@@ -38,6 +38,7 @@ const onSignOut = (event) => {
   location.reload()
 }
 
+// API call to get meals
 const onGetMeals = (event) => {
   event.preventDefault()
   api.getMeals()
@@ -45,6 +46,7 @@ const onGetMeals = (event) => {
     .catch(ui.failure)
 }
 
+// API call to create a new order
 const onCreateOrder = (event) => {
   event.preventDefault()
 
@@ -67,7 +69,7 @@ const onCreateOrder = (event) => {
     api.createOrder(data)
       .then((response) => {
         ui.createOrderSuccess(response)
-        ui.addMealsSuccess(response, total, mealName)
+        ui.addMealsSuccess(response, total, price, mealName)
       })
       .catch(ui.failure)
 
@@ -79,6 +81,7 @@ const onCreateOrder = (event) => {
   return store.price
 }
 
+// API call to delete an order
 const onDeleteOrder = (event) => {
   event.preventDefault()
   const orderId = event.target.parentNode.dataset.id
@@ -97,6 +100,7 @@ const onDeleteOrder = (event) => {
   $(event.target.offsetParent).remove()
 }
 
+// API call to create a final order (cart)
 const onCreateFinalOrder = (event) => {
   event.preventDefault()
   const data = {
@@ -110,6 +114,7 @@ const onCreateFinalOrder = (event) => {
     .catch(ui.failure)
 }
 
+// API call to get final orders
 const onGetFinalOrders = (event) => {
   event.preventDefault()
   api.getFinalOrders(event)
@@ -117,8 +122,7 @@ const onGetFinalOrders = (event) => {
     .catch(ui.failure)
 }
 
-// $('nav').on('click', '#order-again-button', onGetMeals(event))
-
+// event handlers for app.js
 const addHandlers = () => {
   $('body').on('submit', '.order-meal-button', onCreateOrder)
   $('#checkout-button').on('click', onCreateFinalOrder)

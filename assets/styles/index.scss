@@ -3,13 +3,13 @@ $primary-color: #00bf1f;
 $secondary-color: #eaeaea;
 
 * {
-  font-family: 'Poiret One';
   margin: 0;
   padding: 0;
 }
 
 nav {
   background-color: $primary-color;
+  font-family: 'Poiret One';
   font-size: 1.5rem;
   height: 6rem;
   margin: 1px 0;
@@ -101,6 +101,34 @@ input {
   font-family: arial;
   text-decoration-line: underline;
   text-indent: 2em;
+}
+
+.current-order {
+  height: 75vh;
+  margin: 10px;
+}
+
+.card-title {
+  display: flex;
+  flex-direction: row;
+  font-family: 'Poiret One';
+  justify-content: space-between;
+}
+
+.cart-mealName {
+  margin-left: 3rem;
+}
+
+.cart-price {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Fjalla One', sans-serif;
+  text-align: right;
+}
+
+.total-box {
+  margin: 1rem 3rem;
+  text-align: right;
 }
 
 #getMealsButton {
