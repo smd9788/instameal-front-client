@@ -7,7 +7,7 @@
 
   <!-- Do not add `link` tags-->
   <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-  <link href="https://fonts.googleapis.com/css?family=Poiret+One" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Poiret+One|Josefin+Sans&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./assets/styles/index.scss">
 
   <!-- Do not add `script` tags-->
@@ -163,15 +163,19 @@
     <div class='container'>
       <div class="row">
         <!-- This is where menu renders with Handlebars template -->
-        <div class=col-sm-4 id='menu-cards'></div>
+        <div class="col-sm-4" id='menu-cards'></div>
         <!-- This is where shopping cart renders with Handlebars template -->
-        <div class=col-lg-8 id='current-order'>
-          <div id="cart-message"></div>
-          <div id="final-total-message"></div>
-          <div id='menu-card'></div>
-          <form id="checkout-button">
-            <button class="btn btn-primary checkout-button" type="button">Checkout</button>
-          </form>
+        <div class="col-lg-8 container" id='current-order'>
+          <div id="cart-message" style="margin: 1rem 3rem;"></div>
+          <div class="row" style="justify-content: center">
+            <div id='menu-card'></div>
+          </div>
+          <div class="total-box">
+            <div class="col align-self-end" id="final-total-message"></div>
+            <form id="checkout-button">
+              <button class="btn btn-primary checkout-button" type="button">Checkout</button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
