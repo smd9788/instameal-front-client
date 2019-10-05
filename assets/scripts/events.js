@@ -72,8 +72,6 @@ const onCreateOrder = (event) => {
         ui.addMealsSuccess(response, total, price, mealName)
       })
       .catch(ui.failure)
-
-    $('#cart-message').html(`<h5>Added ${quantity} ${mealName} to cart</h5>`)
     $('#final-total-message').html(`<h5>Order Total: ${Math.round(store.price * 100) / 100}</h5>`)
   }
 
