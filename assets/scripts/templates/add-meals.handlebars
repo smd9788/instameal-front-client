@@ -1,7 +1,7 @@
-<div class="card" class="cart-card" style="width: 50vw;">
-  <div class="card-body">
-    <div class="card-title container" data-id="{{orders}}">
-      <h4 class="col-sm-8">
+<div class="card container">
+  <div class="card-body row justify-content-between p-2">
+    <div class="card-title col-10 mt-1" data-id="{{orders}}">
+      <h4>
         <span class="cart-quantity">{{quantity}}</span>
         <span class="cart-mealName">{{mealName}}</span>
       </h4>
@@ -9,11 +9,9 @@
         <h4>${{total}}</h4>
         <h6 class="text-muted">${{price}}ea.</h6>
       </div>
-      <section data-id="{{orders}}">
-        <form class="remove-meal-button" data-price="{{total}}" data-id="{{orders}}" data-quantity="{{quantity}}">
-          <button id="remove-meal-button" type="submit" class="btn btn-danger right">Remove</button>
-        </form>
-      </section>
     </div>
+    <form data-price="{{total}}" data-id="{{orders}}" data-quantity="{{quantity}}" class="col-2">
+      <button id="remove-meal-button" type="submit" class="btn btn-danger">Remove</button>
+    </form>
   </div>
 </div>
